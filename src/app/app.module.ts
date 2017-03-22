@@ -6,6 +6,7 @@ import { HttpModule } from '@angular/http';
 import { AppComponent } from './app.component';
 import { PostListComponent } from './posts/post-list/post-list.component';
 import { Wpng2RoutingModule } from './app-routing.module';
+import { WpModule } from './wp.module';
 import { PostSingleComponent } from './posts/post-single/post-single.component';
 
 @NgModule({
@@ -18,7 +19,8 @@ import { PostSingleComponent } from './posts/post-single/post-single.component';
     BrowserModule,
     FormsModule,
     HttpModule,
-    Wpng2RoutingModule
+    Wpng2RoutingModule,
+    WpModule
   ],
   providers: [],
   bootstrap: [AppComponent]

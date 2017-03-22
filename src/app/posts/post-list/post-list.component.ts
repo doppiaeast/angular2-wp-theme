@@ -1,32 +1,29 @@
 import { Component, OnInit } from '@angular/core';
 import { Post } from '../post';
-import { PostsService } from '../posts.service';
 import { Router } from '@angular/router';
+import { WpApiPosts } from 'wp-api-angular';
 
 @Component({
   selector: 'app-post-list',
   templateUrl: './post-list.component.html',
   styleUrls: ['./post-list.component.css'],
-  providers: [PostsService]
 })
 export class PostListComponent implements OnInit {
 
   posts: Post[];
 
-  constructor( private postsService: PostsService, private router: Router ) { }
+  constructor( private wpApiPosts: WpApiPosts, private router: Router ) { }
 
   getPosts(){
-    this.postsService
-      .getPosts()
-      .subscribe(res => {
-        this.posts = res;
-      });
+    this.wpApiPosts.getList().toPromise()
+      .then(response => response.json())
+      .then(body => this.posts = body)
   }
 
   ngOnInit() {
     this.getPosts();
   }
- 
+
   selectPost(slug) {
   	this.router.navigate([slug]);
   }
