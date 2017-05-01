@@ -31,8 +31,6 @@ export class PostSingleComponent implements OnInit {
       .subscribe((res) => {
         // success
         this.post = res[0];
-        console.log(this.post.content.rendered);
-        
         let component = this.postContentResolverService.createDynamicComponent(this.post.content.rendered);
         let componentFactory = this.postContentResolverService.createAdHocComponentFactory(component);
         let componentRef = this.content.createComponent(componentFactory);
