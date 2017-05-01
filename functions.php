@@ -10,7 +10,7 @@
         $classList    = $class != '' ? ' class="'.$class.'" ' : '' ;
         $inlineStyles = $style != '' ? ' style="'.$style.'" ' : '' ;
 
-        $div  = '<app-divider '.$classList.$inlineStyles.' data-ngwp=""><!--app-divider-->';
+        $div  = '<app-divider '.$classList.$inlineStyles.'><!--app-divider-->';
         $div .= do_shortcode($content);
         $div .= '</app-divider>';
 

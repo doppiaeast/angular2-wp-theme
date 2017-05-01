@@ -16,21 +16,14 @@ export class PostSingleComponent implements OnInit {
   post: any;
   error: any;
 
-  // @ViewChild('content') content;
   @ViewChild('content', { read: ViewContainerRef }) content;
 
   constructor(
     private postsService: PostsService,
     private route: ActivatedRoute,
-    // private domSanitizer: DomSanitizer,
     private componentFactoryResolver: ComponentFactoryResolver,
-    // private viewContainerRef: ViewContainerRef,
     private postContentResolverService: PostContentResolverService
   ) { }
-
-  // ngAfterViewInit() {
-  //   this.viewContainerRef.createEmbeddedView(this.content);
-  // }
 
   getPost(slug) {
     this.postsService
@@ -38,13 +31,12 @@ export class PostSingleComponent implements OnInit {
       .subscribe((res) => {
         // success
         this.post = res[0];
+        console.log(this.post.content.rendered);
+        
         let component = this.postContentResolverService.createDynamicComponent(this.post.content.rendered);
         let componentFactory = this.postContentResolverService.createAdHocComponentFactory(component);
-
         let componentRef = this.content.createComponent(componentFactory);
         componentRef.changeDetectorRef.detectChanges();
-
-        // this.content = this.domSanitizer.bypassSecurityTrustHtml(this.post.content.rendered) ;
       }, (err) => {
         // error
         this.error = err;
