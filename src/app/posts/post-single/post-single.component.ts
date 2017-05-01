@@ -40,7 +40,8 @@ export class PostSingleComponent implements OnInit {
         this.post = res[0];
         let component = this.postContentResolverService.createDynamicComponent(this.post.content.rendered);
         let componentFactory = this.postContentResolverService.createAdHocComponentFactory(component);
-        let componentRef = this.content.viewContainerRef.createComponent(componentFactory);
+
+        let componentRef = this.content.createComponent(componentFactory);
         componentRef.changeDetectorRef.detectChanges();
 
         // this.content = this.domSanitizer.bypassSecurityTrustHtml(this.post.content.rendered) ;

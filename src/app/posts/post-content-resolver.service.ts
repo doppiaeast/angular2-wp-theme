@@ -10,6 +10,7 @@ import {
   Compiler
 } from '@angular/core';
 import { CommonModule } from '@angular/common';
+import { AppModule } from '../app.module';
 
 @Injectable()
 export class PostContentResolverService {
@@ -28,7 +29,7 @@ export class PostContentResolverService {
     @NgModule({
       declarations: [component],
       entryComponents: [component],
-      imports: [CommonModule],
+      imports: [ AppModule, CommonModule ],
     })
     class AdHocModule { }
     const factory = this.compiler.compileModuleAndAllComponentsSync(AdHocModule).componentFactories

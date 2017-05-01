@@ -24,6 +24,9 @@ import { PostContentResolverService } from './posts/post-content-resolver.servic
     Wpng2RoutingModule
   ],
   providers: [PostContentResolverService],
-  bootstrap: [AppComponent]
+  bootstrap: [AppComponent],
+  exports: [
+    DividerComponent
+  ]
 })
 export class AppModule { }
