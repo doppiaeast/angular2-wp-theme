@@ -25,8 +25,6 @@ import { PostContentResolverService } from './posts/post-content-resolver.servic
   ],
   providers: [PostContentResolverService],
   bootstrap: [AppComponent],
-  exports: [
-    ShortcodeComponent
-  ]
+  exports: [ShortcodeComponent]
 })
 export class AppModule { }

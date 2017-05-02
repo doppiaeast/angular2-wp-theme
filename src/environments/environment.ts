@@ -5,5 +5,5 @@
 
 export const environment = {
   production: false,
-  wpBase: '//localhost:8888/wp-json/wp/v2/'
+  wpBase: '//localhost/wp-json/wp/v2/'
 };

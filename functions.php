@@ -14,6 +14,6 @@
 
     }
     add_shortcode( 'app-shortcode', 'shortcode_func' );
-    add_shortcode( 'app-another-shortcode', 'shortcode_func' ); // add whatever tags you need
+    add_shortcode( 'any-tag-name-you-want', 'shortcode_func' );
 
 ?>
