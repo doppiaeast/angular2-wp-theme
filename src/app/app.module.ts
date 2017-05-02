@@ -7,7 +7,7 @@ import { AppComponent } from './app.component';
 import { PostListComponent } from './posts/post-list/post-list.component';
 import { Wpng2RoutingModule } from './app-routing.module';
 import { PostSingleComponent } from './posts/post-single/post-single.component';
-import { DividerComponent } from './shortcodes/divider/divider.component';
+import { ShortcodeComponent } from './shortcodes/shortcode/shortcode.component';
 import { PostContentResolverService } from './posts/post-content-resolver.service';
 
 @NgModule({
@@ -15,7 +15,7 @@ import { PostContentResolverService } from './posts/post-content-resolver.servic
     AppComponent,
     PostListComponent,
     PostSingleComponent,
-    DividerComponent
+    ShortcodeComponent
   ],
   imports: [
     BrowserModule,
@@ -26,7 +26,7 @@ import { PostContentResolverService } from './posts/post-content-resolver.servic
   providers: [PostContentResolverService],
   bootstrap: [AppComponent],
   exports: [
-    DividerComponent
+    ShortcodeComponent
   ]
 })
 export class AppModule { }

@@ -1,20 +1,20 @@
 import { async, ComponentFixture, TestBed } from '@angular/core/testing';
 
-import { DividerComponent } from './divider.component';
+import { ShortcodeComponent } from './shortcode.component';
 
-describe('DividerComponent', () => {
-  let component: DividerComponent;
-  let fixture: ComponentFixture<DividerComponent>;
+describe('ShortcodeComponent', () => {
+  let component: ShortcodeComponent;
+  let fixture: ComponentFixture<ShortcodeComponent>;
 
   beforeEach(async(() => {
     TestBed.configureTestingModule({
-      declarations: [ DividerComponent ]
+      declarations: [ ShortcodeComponent ]
     })
     .compileComponents();
   }));
 
   beforeEach(() => {
-    fixture = TestBed.createComponent(DividerComponent);
+    fixture = TestBed.createComponent(ShortcodeComponent);
     component = fixture.componentInstance;
     fixture.detectChanges();
   });

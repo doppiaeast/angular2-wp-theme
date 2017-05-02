@@ -1,11 +1,11 @@
 import { Component, OnInit, Input } from '@angular/core';
 
 @Component({
-  selector: 'app-divider',
-  templateUrl: './divider.component.html',
-  styleUrls: ['./divider.component.scss']
+  selector: 'app-shortcode',
+  templateUrl: './shortcode.component.html',
+  styleUrls: ['./shortcode.component.css']
 })
-export class DividerComponent implements OnInit {
+export class ShortcodeComponent implements OnInit {
 
   @Input() input: string;
 
