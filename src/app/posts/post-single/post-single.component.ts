@@ -1,6 +1,8 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, ViewChild, ComponentFactoryResolver, ViewContainerRef, AfterViewInit } from '@angular/core';
+import { DomSanitizer } from '@angular/platform-browser';
 import { Post } from '../post';
 import { PostsService } from '../posts.service';
+import { PostContentResolverService } from '../post-content-resolver.service';
 import { Router, ActivatedRoute, Params } from '@angular/router';
 
 @Component({
@@ -11,17 +13,28 @@ import { Router, ActivatedRoute, Params } from '@angular/router';
 })
 export class PostSingleComponent implements OnInit {
 
-  post: Post;
+  post: any;
   error: any;
 
-  constructor( private postsService: PostsService, private route: ActivatedRoute ) { }
+  @ViewChild('content', { read: ViewContainerRef }) content;
 
-  getPost(slug){
+  constructor(
+    private postsService: PostsService,
+    private route: ActivatedRoute,
+    private componentFactoryResolver: ComponentFactoryResolver,
+    private postContentResolverService: PostContentResolverService
+  ) { }
+
+  getPost(slug) {
     this.postsService
       .getPost(slug)
-      .subscribe( (res) => {
+      .subscribe((res) => {
         // success
         this.post = res[0];
+        let component = this.postContentResolverService.createDynamicComponent(this.post.content.rendered);
+        let componentFactory = this.postContentResolverService.createAdHocComponentFactory(component);
+        let componentRef = this.content.createComponent(componentFactory);
+        componentRef.changeDetectorRef.detectChanges();
       }, (err) => {
         // error
         this.error = err;
@@ -31,8 +44,8 @@ export class PostSingleComponent implements OnInit {
   ngOnInit() {
 
     this.route.params.forEach((params: Params) => {
-       let slug = params['slug'];
-       this.getPost(slug)
+      let slug = params['slug'];
+      this.getPost(slug);
     });
 
   }
