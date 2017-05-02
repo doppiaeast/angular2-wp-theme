@@ -1,14 +1,19 @@
 <?php
 
-    function shortcode_func( $atts, $content=null ) {
-        ob_start(); ?>
+    function shortcode_func( $atts, $content=null, $tag='' ) {
+        
+        $output = '<'.$tag.' ';               // opening tag
+        foreach($atts as $att => $val) {
+            $output .= $att.'="'.$val.'" ';   // echo all attributes from the shorcode
+        }
+        $output .= '>';                       // close the opening tag
+        $output .= do_shortcode($content);    // content
+        $output .= '</'.$tag.'>';             // closing tag
 
-        <app-shortcode <?php foreach($atts as $att => $val){ echo $att.'="'.$val.'"'; } ?> >
-            <?php echo do_shortcode($content); ?>
-        </app-shortcode>
+        return $output;
 
-        <?php return ob_get_clean();
     }
-    add_shortcode( 'shortcode', 'shortcode_func' );
+    add_shortcode( 'app-shortcode', 'shortcode_func' );
+    add_shortcode( 'app-another-shortcode', 'shortcode_func' ); // add whatever tags you need
 
 ?>
